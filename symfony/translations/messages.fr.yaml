@@ -1,0 +1,13 @@
+subscribe:
+  title: Nouveau Joueur
+  username: Pseudo
+  password: Mot de Passe
+  confirm: Confirmer le Mot de Passe
+  mail: E-mail
+  save: Créer le Joueur
+
+login:
+  title: Connexion
+  username: Identifiant
+  password: Mot de passe
+  connect: Se connecter

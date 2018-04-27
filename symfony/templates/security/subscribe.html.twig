@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'subscribe.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>{{ 'subscribe.title'|trans }}</h1>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
