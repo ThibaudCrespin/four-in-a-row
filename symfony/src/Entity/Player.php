@@ -142,7 +142,13 @@ class Player implements UserInterface, \Serializable
      */
     public function serialize()
     {
-        // TODO: Implement serialize() method.
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
 
     /**
@@ -156,6 +162,12 @@ class Player implements UserInterface, \Serializable
      */
     public function unserialize($serialized)
     {
-        // TODO: Implement unserialize() method.
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized, ['allowed_classes' => false]);
     }
 }

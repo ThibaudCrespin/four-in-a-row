@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Game;
+use App\Entity\Player;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -47,4 +48,21 @@ class GameRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByPlayer(Player $player)
+    {
+        $qb = $this->createQueryBuilder('g');
+        $qb->andWhere(
+            $qb->expr()->orX(
+                $qb->expr()->eq('g.player1', ':player'),
+                $qb->expr()->eq('g.player2', ':player')
+            )
+        );
+
+        return $qb
+            ->addOrderBy('g.updatedAt', 'ASC')
+            ->setParameter('player', $player)
+            ->getQuery()
+            ->getResult();
+    }
 }
